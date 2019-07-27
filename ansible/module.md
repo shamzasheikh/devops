@@ -1,0 +1,10 @@
+task
+name
+command
+when
+ansible_facts
+register
+ignore_errors
+debug
+shell
+vars

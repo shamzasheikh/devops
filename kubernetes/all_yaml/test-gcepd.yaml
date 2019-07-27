@@ -1,0 +1,17 @@
+#test-gcepd.yaml
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: gce-pd
+spec:
+  containers:
+  - name: test-container
+    image: nginx
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    gcePersistentDisk:
+     pdName: my-data-disk
+     fsType: ext4

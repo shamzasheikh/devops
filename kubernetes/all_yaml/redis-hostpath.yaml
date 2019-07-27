@@ -1,0 +1,16 @@
+#redis-hostpath.yaml
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: redis-hostpath
+spec:
+  containers:
+  - name: redis-container
+    image: redis
+    volumeMounts:
+    - mountPath: /test-mnt
+      name: test-volume
+  volumes:
+  - name: test-volume
+    hostPath:
+     path: /test-vol

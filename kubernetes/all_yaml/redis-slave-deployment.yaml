@@ -1,0 +1,31 @@
+#Deployment
+#redis-slave-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-slave
+  labels:
+    app: redis
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: redis
+      role: master
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: master
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: gcr.io/google_samples/gb-redisslave:v1
+        resources:
+         requests:
+          cpu: 100m
+          memory: 100Mi
+        ports:
+        - containerPort: 6379

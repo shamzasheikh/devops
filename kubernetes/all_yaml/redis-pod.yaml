@@ -1,0 +1,19 @@
+#redis-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: redis
+spec:
+  containers:
+  - name: redis
+    image: redis:2.8.23
+    volumeMounts:
+    - mountPath: /redis-master
+      name: config
+  volumes:
+  - name: config
+    configMap:
+      name: example-redis-config
+      items:
+      - key: redis-config
+        path: redis.conf
