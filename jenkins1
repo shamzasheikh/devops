@@ -1,0 +1,12 @@
+#!/usr/bin/env groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo "I have decided to say ${params.GREET}"
+            }
+        }
+    }
+}
